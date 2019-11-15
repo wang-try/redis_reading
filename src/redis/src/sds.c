@@ -250,7 +250,7 @@ sds sdsMakeRoomFor(sds s, size_t addlen) {
         // 否则，分配长度为目前长度加上 SDS_MAX_PREALLOC
         newlen += SDS_MAX_PREALLOC;
     // T = O(N)
-    newsh = zrealloc(sh, sizeof(struct sdshdr)+newlen+1);
+    newsh = zrealloc(sh, sizeof(struct sdshdr)+newlen+1);//释放旧的sh，重新分配新的内存，大小为sizeof(struct sdshdr)+newlen+1
 
     // 内存不足，分配失败，返回
     if (newsh == NULL) return NULL;
